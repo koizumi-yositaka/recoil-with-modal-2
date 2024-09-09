@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:api\" ",
+    "dev:client":"vite",
+    "dev:api":"npx json-server --watch ./src/db/db.json -p 4040",
+    "start":"concurrently \"npm run dev:client\" \"npm run dev:api\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
